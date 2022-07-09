@@ -15,8 +15,6 @@ from base64 import encode
 from collections import OrderedDict
 import fileinput
 import re
-
-from django.forms import all_valid
 import iuliia
 import argparse
 
