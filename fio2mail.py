@@ -11,7 +11,6 @@
 #
 # ... или типо того.
 
-from base64 import encode
 from collections import OrderedDict
 import fileinput
 import re
@@ -48,7 +47,7 @@ myepilog = '''
 
 
 
-Примеры запусков:
+Примеры запуска:
     echo 'Сергей Николаевич Иванов\\nАнтон ? Городецкий' | fio2mail.py -p '{3}_{1:.1}{2:.1}@example.ru'
     echo 'Иван Николаевич Городецкий' | fio2mail.py -t
     fio2mail.py -p '{2}.{1}@random.mail' -f names.txt
@@ -139,7 +138,7 @@ def mailgen(datalist, mailsheme):
 # Парсер аргументов командной строки
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter,description=mydescription,epilog=myepilog)
 t_or_p = parser.add_mutually_exclusive_group(required=True)
-t_or_p.add_argument("-p", metavar='pattern', type=str, help="Паттерн генерации строки. Подается напрямую в функцию format, так что аккуратнее")
+t_or_p.add_argument("-p", metavar='pattern', type=str, help="Паттерн генерации строки. Подается напрямую в функцию format")
 t_or_p.add_argument("-t", action="store_true", help="Траслитерация любого текста напрямую без иных преобразований")
 parser.add_argument("-f", metavar='FILE', type=str, default='-', help="Читать ФИО из файла. Если не задан, читает stdin, в том числе интерактивно. Но это скорее баг, чем фитча xD")
 parser.add_argument("-f1", metavar='FILE', type=str, default='', help="Cписок вариантов для первого слова")
